@@ -1,0 +1,29 @@
+<head>
+  <meta charset="UTF-8">
+  <title>guess the number</title>
+</head>
+<body>
+
+  <h1>Guess a number!</h1>
+
+  <form action="/guess" method="POST">
+    <input type="text" name="number">
+    <input type="submit" value="Send">
+  </form>
+
+  <hr>
+
+  <h2>{{session['error']}}</h2>
+
+  {% if session['guess_state'] == -1 %}
+    <h1>Too low</h1>
+  {% elif session['guess_state'] == 0 %}
+    <h1>YOU GUESSED CORRECT</h1>
+    <form action="/playagain" method="post">
+      <input type="submit" value="Play again?">
+    </form>
+  {% elif session['guess_state'] == 1 %}
+    <h1>Too high</h1>
+  {% endif %}
+
+</body>
